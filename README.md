@@ -28,7 +28,7 @@ A ementa a respeito deste projeto contém as seguintes seções:
 
 ### [Eigen](https://libeigen.gitlab.io/): "Eigen is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms."
 
-### [<Random>](https://cplusplus.com/reference/random/?kw=random): "This header introduces random number generation facilities."
+### [Random](https://cplusplus.com/reference/random/?kw=random): "This header introduces random number generation facilities."
 
 ## Bibliografia
 
