@@ -23,3 +23,19 @@ Então, no fim das contas, como se define um **MDP**? Um **Processo Markoviano d
 
 
 ## A Interface Agente-Ambiente
+
+Durante um **processo de tomada de decisão sequencial**, por parte de um **agente**, temos a sua interação com o ambiente através da escolha de ações. Cada "momento", ou unidade de tempo, que decorre durante o processo é chamado de **episódio**.
+
+(Colocar imagem do diagrama)
+
+Observando a imagem acima, é possível perceber o ciclo:
+
+1) No momento `t`, o agente no estado `St` toma a ação `At`;
+
+2) Interagindo com o ambiente, essa ação faz com que o agente transite, no próximo episódio `t+1`, para o estado `S(t+1)`, produzindo a recompensa `R(t+1)`;
+
+3) E, assim sucessivamente.
+
+No caso, o agente e o ambiente interagem em cada **sequência discreta de tempo**, `t = 0, 1, 2, ...`. O MDP e o agente, juntos, formam uma **trajetória** ou uma **sequência** que começa da seguinte maneira:
+
+`S0, A0, R1, S1, A1, R2, S2, A2, R3, ...`
