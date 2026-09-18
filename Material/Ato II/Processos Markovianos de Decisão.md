@@ -1,4 +1,4 @@
-# Cadeias de Markov
+# Processos Markovianos de Decisão
 
 Agora, com a base necessária, podemos começar a pensar no que seriam os **Processos Markovianos de Decisão (Markovian Decision Process - MDP)**.
 
