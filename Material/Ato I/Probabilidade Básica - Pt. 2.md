@@ -92,4 +92,4 @@ Se $X$ tiver f.m.p. $P(X = 0) = \frac{1}{3}$ e $P(X = 1) = \frac{2}{3}$, então 
 
 $E(X) = 0 * \frac{1}{3} + 1 * \frac{2}{3} = \frac{2}{3}$
 
-O valor de $x=1$ possui duas vezes mais probabilidade de ocorrer do que $x=0$.
+O valor de $x=1$ possui duas vezes mais probabilidade de ocorrer do que $x=0$. Como $E(X) = \frac{2}{3}$, então temos maior **esperança** de que para $X = a$, a probabilidade de $p(a)$ será $\frac{2}{3}$. É como dizermos que nossa intuição para a probabilidade nas condições desse experimento é a média dos valores, o que pode ser um bom chute se não tivermos condições de calcular a probabilidade desse valor.
