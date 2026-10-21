@@ -78,7 +78,7 @@ Se você notar, a soma das probabilidades para cada valor possível de $X$ resul
 
 $\sum_{i=1}^{∞} p(x_i) = 1$
 
-Imagine que você tem uma quantidade 1 (que é a probabilidade do espaço amostral). A função de probabilidade **distribui** essa quantidade (ou essas probabilidades) pelos valores possíveis da variável aleatória.
+Imagine que você tem uma quantidade 1 (que é a probabilidade do espaço amostral). A função de probabilidade **distribui** essa quantidade (ou essas probabilidades) entre os valores possíveis da variável aleatória.
 
 ## Esperança (ou Valor Esperado)
 
