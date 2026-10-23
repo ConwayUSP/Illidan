@@ -7,7 +7,9 @@ Agora, chegou o momento de começar a visualizar problemas a serem resolvidos co
 
 ## Chegando o mais rápido possível em algum lugar
 
-Imagine um jogo de tabuleiro simples, com casas (posições) e um peão que irá se deslocar através delas. Para isso, você deve escolher entre dois dados, um diferente do outro. A quantidade de casas que o peão andará será o número obtido como resultado no lançamento do dado escolhido. O objetivo do jogo é chegar o mais rápido possível em uma casa específica pré-definida.
+Imagine **um jogo de tabuleiro simples**, com casas (posições) e um peão que irá se deslocar através delas. Para isso, você deve escolher entre dois dados, um diferente do outro. A quantidade de casas que o peão andará será o número obtido como resultado no lançamento do dado escolhido. **O objetivo do jogo é chegar o mais rápido possível em uma casa específica pré-definida**.
+
+Caso o valor resultante do dado faça com que **o deslocamento do peão seja superior à posição final**, **o peão deve andar "para trás" o número de casas equivalente à diferença**. Então, por exemplo, caso existam seis casas, o peão esteja na posição cinco e, ao selecionar o dado, o resultado seja dois, a localização final do peão será a casa cinco.
 
 (Inserir imagens de um peão, alguns dados e um tabuleiro)
 
@@ -44,4 +46,103 @@ Essas serão as nossas ações. Podemos, para fins de organização (ou não), e
 acoes = [0, 1]
 ```
 
-Aqui, o número **zero** vai dizer respeito ao `d2`, enquanto que o **um** será referente ao `d3`.
+Aqui, o número **zero** vai dizer respeito ao `d2`, enquanto que o **um** será referente ao `d3`. Não é muito intuitivo, mas vai servir.
+
+É importante, também, definir as recompensas. A nossa lista de recompensas, onde cada índice diz respeito a um estado, será:
+
+```python
+recompensas_por_estado = [-1, -1, -1, -1, -1, 0]
+```
+
+No caso, as nossas recompensas são -1 em todas as posições, com exceção da última. Essa decisão visa indicar que estar em qualquer estado, que não seja o último, é igualmente ruim no que tange ao objetivo final. É um pouco estranho à primeira vista, especialmente se você levar em consideração que estar em uma posição mais próxima da sexta é melhor do que o contrário. Mas, nosso objetivo não é apenas se aproximar, e sim chegar ao destino. Logo, o nosso agente só deixará de obter prejuízos quando chegar no seu objetivo.
+
+Até então, já definimos três elementos da nossa tupla $\langle \mathcal{S}, \mathcal{A}, T, R \rangle$. Para definir o nosso **MDP** em sua totalidade, precisamos daquilo que define **a dinâmica do problema**: a nossa **função de transição**.
+
+Como se trata de um problema de escopo reduzido, podemos, por enquanto, usufruir de uma **matriz de transições para cada ação**.
+
+Lembrando que, aqui, cada linha diz respeito ao **estado inicial**, enquanto que cada coluna diz respeito ao **estado final**.
+
+Considerando a **Ação 0**, o nosso **D2**, como ficaria a primeira linha da matriz?
+
+1) Não é possível transitarmos da posição zero para ela mesma, logo, a probabilidade na **linha 0** e na **coluna 0** será **zero**;
+2) No lançamento do dado, a probabilidade de obtermos 1 ou 2 será igual. Assim, poderemos transitar tanto para o **Estado 1** quanto para o **Estado 2** com chances iguais, que será **1/2**;
+3) Os demais estados não poderão ser alcançados a partir de um único lançamento.
+
+Teremos, então, a seguinte linha referente ao **Estado de Partida sendo o Estado 0**:
+
+```python
+transicao_d2 = [
+    [0, 1/2, 1/2, 0, 0, 0]
+]
+```
+
+Para a segunda, terceira e quarta linha, teremos **basicamente a mesma lógica aplicada acima**. O estado de onde partiremos não poderá ser alcançado a partir de um único lançamento e poderemos alcançar as duas posições seguintes com iguais probabilidades! Assim, nossas linhas ficarão:
+
+```python
+transicao_d2 = [
+    [0, 1 / 2, 1 / 2,   0,     0,     0],
+    [0,   0,   1 / 2, 1 / 2,   0,     0],
+    [0,   0,     0,   1 / 2, 1 / 2,   0],
+    [0,   0,     0,     0,   1 / 2, 1 / 2],
+]
+```
+
+Agora, para as linhas seguintes, teremos algumas diferenças. Lembre-se que o nosso peão pode acabar voltando para casas anteriores caso o valor obtido a partir do lançamento faça com que **a posição final dele exceda a última casa**.
+
+Logo, caso o peão esteja na posição cinco e o resultado do lançamento do dado seja 2, **ele poderá retornar para a própria posição 5**. Além disso, ele pode transitar com igual probabilidade para a casa 6. Logo, teremos:
+
+```python
+transicao_d2 = [
+    [0, 1 / 2, 1 / 2,   0,     0,     0],
+    [0,   0,   1 / 2, 1 / 2,   0,     0],
+    [0,   0,     0,   1 / 2, 1 / 2,   0],
+    [0,   0,     0,     0,   1 / 2, 1 / 2],
+    [0,   0,     0,     0,   1 / 2, 1 / 2],
+]
+```
+
+E se o peão estiver na casa 6? O jogo já terá terminado! Representamos isso ao colocar 1 na casa 6:
+
+```python
+transicao_d2 = [
+    [0, 1 / 2, 1 / 2,   0,     0,     0],
+    [0,   0,   1 / 2, 1 / 2,   0,     0],
+    [0,   0,     0,   1 / 2, 1 / 2,   0],
+    [0,   0,     0,     0,   1 / 2, 1 / 2],
+    [0,   0,     0,     0,   1 / 2, 1 / 2],
+    [0,   0,     0,     0,     0,     1],
+]
+```
+
+Então, já temos em mãos **a matriz de transição para a ação 0**!
+
+No que diz respeito à matriz para a ação 0, sua construção passo a passo fica como exercício para o leitor. A sua forma final será:
+
+```python
+transicao_d3 = [
+    [0, 1 / 3, 1 / 3, 1 / 3,   0,     0],
+    [0,   0,   1 / 3, 1 / 3, 1 / 3,   0],
+    [0,   0,     0,   1 / 3, 1 / 3, 1 / 3],
+    [0,   0,     0,     0,   2 / 3, 1 / 3],
+    [0,   0,     0,   1 / 3, 1 / 3, 1 / 3],
+    [0,   0,     0,     0,     0,     1],
+]
+```
+
+Temos, enfim, a definição do nosso **MDP**. Podemos utilizar, então, o `Value Iteration` para encontrar a política ótima em cada estado.
+
+Podemos definir a nossa lista `trans_func_per_action` apenas como sendo uma lista com cada uma das matrizes:
+
+```python
+trans_func_per_action = [transicao_d2, transicao_d3]
+```
+
+Como construímos a versão de `value_iteration` pensando na utilização das matrizes de transição, isso será suficiente para obtermos uma lista com a política ótima para cada estado. Vamos chamar a função:
+
+(Colocar chamada de função, atribuições e print)
+
+Assim, teremos como resultado final:
+
+```sh
+[1, 1, 1, 0, 0, 1]
+```
