@@ -26,8 +26,8 @@ from tkinter import messagebox
 # ----------------------------------------------------------------------
 LINHAS = 5
 COLUNAS = 6
-TOTAL_CASAS = LINHAS * COLUNAS      # casas de 0 até TOTAL_CASAS - 1
-TAMANHO_CASA = 70                   # pixels
+TOTAL_CASAS = 6      # casas de 0 até TOTAL_CASAS - 1
+TAMANHO_CASA = 70    # pixels
 MARGEM = 20
 
 
@@ -56,8 +56,8 @@ class Dado:
 
 # Dois dados diferentes: um "seguro" e um "arriscado" (pode não andar,
 # mas também pode andar mais). Altere à vontade.
-DADO_COMUM = Dado("Dado Comum", [1, 2, 3, 4, 5, 6])
-DADO_ARRISCADO = Dado("Dado Arriscado", [0, 0, 2, 4, 6, 8])
+DADO_D2 = Dado("Dado D2", [1, 2])
+DADO_D3 = Dado("Dado D3", [1, 2, 3])
 
 
 # ----------------------------------------------------------------------
@@ -317,7 +317,7 @@ def main():
         JogadorHumano("Você", "#1d6fd1"),
         JogadorComputador("Computador", "#d1341d"),
     ]
-    jogo = Jogo(jogadores, [DADO_COMUM, DADO_ARRISCADO])
+    jogo = Jogo(jogadores, [DADO_D2, DADO_D3])
 
     raiz = tk.Tk()
     App(raiz, jogo)
