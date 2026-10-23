@@ -63,12 +63,13 @@ A f.m.p. $p(a)$ possui as seguintes propriedades:
 
 Assim, para nosso clássico exemplo das moedas, a f.m.p. ficaria:
 
-$P(X = x) = 
-\begin{cases} 
+$$
+P(X = x) = \begin{cases} 
 0,125, & \text{se } x = 0 \text{ ou } x = 3 \\ 
 0,375, & \text{se } x = 1 \text{ ou } x = 2 \\ 
-0,   & \text{caso contrário} 
-\end{cases}$
+0, & \text{caso contrário} 
+\end{cases}
+$$
 
 Imagino que o caso mais confuso seja a probabilidade 0 para quaisquer outros valores, mas é basicamente imaginar que se você lança três moedas, não tem como saírem mais de 3 caras e nem menos de 0 caras.
 
