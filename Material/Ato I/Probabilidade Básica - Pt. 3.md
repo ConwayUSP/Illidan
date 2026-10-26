@@ -34,7 +34,7 @@ $$f(x;A,B,n) = \begin{cases}
 0 & \text{caso contrário} 
 \end{cases}$$
 
-*Nota: A distribuição binomial é o limite da distribuição hipergeométrica quando $A \rightarrow \infty$, $B \rightarrow \infty$ e $\frac{A}{A+B} \rightarrow p$.*
+**Nota:** A distribuição binomial é o limite da distribuição hipergeométrica quando $A \rightarrow \infty$, $B \rightarrow \infty$ e $\frac{A}{A+B} \rightarrow p$.
 
 ## 5. Distribuição Geométrica
 $x$ é a quantidade de tentativas até obter um sucesso, sendo que a chance de obter sucesso em uma tentativa é $p$. A função de probabilidade com parâmetro $p$ é:

@@ -65,3 +65,5 @@ A história do Illidan é marcada por tomar decisões moralmente duvidosas e ace
 ## Autor
 
 - [Lucas Neves Souza](https://github.com/fatorarpolinomio)
+
+- Com participação especial da queridíssima: [Letícia Sati](https://github.com/sati-dev2007)
