@@ -81,3 +81,7 @@ $$f(x;\lambda) = \begin{cases}
 | **Geométrica** | $f(x)=(1-p)^{x-1}p$ | $E[X]=\frac{1}{p}$ | $Var[X]=\frac{1-p}{p^2}$ |
 | **Binomial Negativa** | $f(x)=\binom{x-1}{k-1}(1-p)^{x-k}p^k$ | $E[X]=k\frac{1}{p}$ | $Var[X]=k\frac{1-p}{p^2}$ |
 | **Poisson** | $f(x)=e^{-\lambda}\frac{\lambda^x}{x!}$ | $E[X]=\lambda$ | $Var[X]=\lambda$ |
+
+# Referências & Agradecimentos
+
+Este capítulo foi baseado no material das aulas de **Introdução a Estatística** do [Professor Doutor Valdinei Freire](https://www.each.usp.br/valdinei/) da **EACH-USP**, com sua permissão concedida diretamente.
