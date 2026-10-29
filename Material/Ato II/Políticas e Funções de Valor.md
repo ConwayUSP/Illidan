@@ -37,15 +37,15 @@ $$
 
 ---
 
-Equação de otimalidade de Bellman para $v_*(s)$:
+Equação de otimalidade de Bellman para $v_{*}(s)$:
 
 $$
 \begin{aligned}
-v_*(s) &= \max_{a \in \mathcal{A}(s)} q_{\pi_*}(s, a) \\
-&= \max_a \mathbb{E}_{\pi_*}[G_t \mid S_t=s, A_t=a] \\
-&= \max_a \mathbb{E}_{\pi_*}[R_{t+1} + \gamma G_{t+1} \mid S_t=s, A_t=a] \\
-&= \max_a \mathbb{E}[R_{t+1} + \gamma v_*(S_{t+1}) \mid S_t=s, A_t=a] \\
-&= \max_a \sum_{s', r} p(s', r \mid s, a) [r + \gamma v_*(s')].
+v_{*}(s) &= \max_{a \in \mathcal{A}(s)} q_{\pi_{*}}(s, a) \\
+&= \max_a \mathbb{E}_{\pi_{*}}[G_t \mid S_t=s, A_t=a] \\
+&= \max_a \mathbb{E}_{\pi_{*}}[R_{t+1} + \gamma G_{t+1} \mid S_t=s, A_t=a] \\
+&= \max_a \mathbb{E}[R_{t+1} + \gamma v_{*}(S_{t+1}) \mid S_t=s, A_t=a] \\
+&= \max_a \sum_{s', r} p(s', r \mid s, a) [r + \gamma v_{*}(s')].
 \end{aligned}
 $$
 
@@ -59,11 +59,11 @@ $$
 
 ---
 
-Equação de otimalidade de Bellman para $q_*(s, a)$:
+Equação de otimalidade de Bellman para $q_{*}(s, a)$:
 
 $$
 \begin{aligned}
-q_*(s, a) &= \mathbb{E} \left[ R_{t+1} + \gamma \max_{a'} q_*(S_{t+1}, a') \mid S_t=s, A_t=a \right] \\
-&= \sum_{s', r} p(s', r \mid s, a) \left[ r + \gamma \max_{a'} q_*(s', a') \right].
+q_{*}(s, a) &= \mathbb{E} \left[ R_{t+1} + \gamma \max_{a'} q_{*}(S_{t+1}, a') \mid S_t=s, A_t=a \right] \\
+&= \sum_{s', r} p(s', r \mid s, a) \left[ r + \gamma \max_{a'} q_{*}(s', a') \right].
 \end{aligned}
 $$
